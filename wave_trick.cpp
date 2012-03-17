@@ -25,15 +25,33 @@ int main( int argc, char** argv){
   length = std::max(len_tmp1,len_tmp2);
   length = length - FORMAT_OFFSET;
 
-  std::cout << length << std::endl;
+  //std::cout << length << std::endl;
 
+
+  /* Read Files */
   std::vector<char> inpcm1(length);
+  std::vector<char> inpcm2(length);
   
   infile1.read(&inpcm1[0],length);
+  infile2.read(&inpcm2[0],length);
 
   //std::cout.write(&inpcm1[0],length);
   
+
+  /* Generate Output vector */
+  std::vector<char> outpcm(length);
+  for (int i=0; i<length-1; i++){
+    if (i%2 == 0)
+      outpcm[i]=inpcm1[i+1];
+    else
+      outpcm[i]=inpcm2[i];
+  }
+  std::cout.write(&outpcm[0],length);
+
+
+  /* Close files  */
   infile1.close();
+  infile2.close();
 
   return 0;
 
