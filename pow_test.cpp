@@ -9,35 +9,53 @@ double gettimeofday_sec(){
 }
 
 int main(){
-  double p_tstart,p_tend;
-  double t_tstart,t_tend;
+  const int ITE = 10;
 
   // Pow * 100
-  p_tstart = gettimeofday_sec();
-  // Timer Start
-  {
-    double a=2.0;
-    double b;
-    for (int i=0; i<100; i++)
-      b = pow(a,2.0);
-    std::cout << "Ans   : " << b << std::endl;
-  }
-  // Timer End
-  p_tend = gettimeofday_sec();
-  std::cout << "Pow   : " << p_tstart - p_tend << std::endl;
+  for (int j=0; j<ITE; j++)
+    {
+      double p_tstart,p_tend;
+      p_tstart = gettimeofday_sec();
+      // Timer Start
+      
+      double a=2.0;
+      double ex=2.0 + j;
+      double b;
+      for (int i=0; i<100; i++){
+	b = pow(a,ex);	
+      }
+      std::cout << "Ans   : " << b << std::endl;
 
-  // times * 100
-  t_tstart = gettimeofday_sec();
-  // Timer Start
+      // Timer End
+      p_tend = gettimeofday_sec();
+      std::cout << "Time   : " << p_tend - p_tstart << std::endl;
+
+    }
+  
+  std::cout << std::endl;
+
+  
+  for (int j=0; j<ITE; j++)
   {
+    double t_tstart,t_tend;
+    t_tstart = gettimeofday_sec();
+    // Timer Start
     double a = 2.0;
     double b;
-    for (int i=0; i<100; i++)
-      b = a*a;
+    
+    for (int i=0; i<100; i++){
+      b = 1.0;
+      for (int k=0; k<2+j; k++){
+	b = b*a;
+      }
+    }
+  
     std::cout << "Ans   : " << b << std::endl;
+    
+    // Timer End
+    t_tend = gettimeofday_sec();
+    std::cout << "Time : " <<  t_tend - t_tstart <<std::endl;
+
   }
-  // Timer End
-  t_tend = gettimeofday_sec();
-  std::cout << "Times : " <<  t_tstart - t_tend <<std::endl;
   
 }
