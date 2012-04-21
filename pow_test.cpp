@@ -9,7 +9,7 @@ double gettimeofday_sec(){
 }
 
 int main(){
-  const int ITE = 10;
+  const int ITE = 99;
 
   // Pow * 100
   for (int j=0; j<ITE; j++)
@@ -24,11 +24,11 @@ int main(){
       for (int i=0; i<100; i++){
 	b = pow(a,ex);	
       }
-      std::cout << "Ans   : " << b << std::endl;
+      //      std::cout << "Ans   : " << b << std::endl;
 
       // Timer End
       p_tend = gettimeofday_sec();
-      std::cout << "Time   : " << p_tend - p_tstart << std::endl;
+      std::cout << ex << " " << p_tend - p_tstart << std::endl;
 
     }
   
@@ -50,11 +50,11 @@ int main(){
       }
     }
   
-    std::cout << "Ans   : " << b << std::endl;
+    //    std::cout << "Ans   : " << b << std::endl;
     
     // Timer End
     t_tend = gettimeofday_sec();
-    std::cout << "Time : " <<  t_tend - t_tstart <<std::endl;
+    std::cout << 2+j << " " <<  t_tend - t_tstart <<std::endl;
 
   }
   
