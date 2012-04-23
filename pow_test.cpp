@@ -10,6 +10,7 @@ double gettimeofday_sec(){
 
 int main(){
   const int ITE = 99;
+  const double TEI = 2.0;
 
   // Pow * 100
   for (int j=0; j<ITE; j++)
@@ -18,7 +19,7 @@ int main(){
       p_tstart = gettimeofday_sec();
       // Timer Start
       
-      double a=2.0;
+      double a=TEI;
       double ex=2.0 + j;
       double b;
       for (int i=0; i<100; i++){
@@ -40,7 +41,7 @@ int main(){
     double t_tstart,t_tend;
     t_tstart = gettimeofday_sec();
     // Timer Start
-    double a = 2.0;
+    double a = TEI;
     double b;
     
     for (int i=0; i<100; i++){
