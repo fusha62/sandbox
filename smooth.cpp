@@ -38,8 +38,9 @@ int main(int argc, char *argv[]){
   for (int i=0; i<smooth.size1(); i++)
     for (int j=0; j<smooth.size2(); j++)
       smooth(i,j)=std::min(4-abs(3-i),4-abs(3-j));
-  std::cout << smooth << std::endl;
+  //std::cout << smooth << std::endl;
   
+  // smooth filter
   // {{1,1,1,1,1,1,1},
   // {1,2,2,2,2,2,1},
   // {1,2,3,3,3,2,1},
@@ -48,6 +49,20 @@ int main(int argc, char *argv[]){
   // {1,2,2,2,2,2,1},
   // {1,1,1,1,1,1,1}};
   
+  // Kを求める
+  double k_val;
+  {
+    boost::numeric::ublas::matrix<double> K(1,1);
+    boost::numeric::ublas::matrix<int> yoko(1,smooth.size2());
+    boost::numeric::ublas::matrix<int> tate(smooth.size1(),1);
+    boost::numeric::ublas::matrix<int> tmp_mat(1,smooth.size2());
+    for (int i=0; i<smooth.size1(); i++){yoko(0,i)=1; tate(i,0)=1;}
+    tmp_mat = boost::numeric::ublas::prod(yoko,smooth);
+    K = boost::numeric::ublas::prod(tmp_mat,tate);
+    k_val = (double)K(0,0);
+  }
+  std::cout << k_val << std::endl;
+
   
   // 画像を書き出し
   outras.image = outras_image;
