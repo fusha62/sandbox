@@ -1,3 +1,7 @@
+/*	 Note for Compile	*/
+// 'require "using System.Linq;"'
+// $ gmcs LINQ.cs -r:System.Core.dll
+
 using System;
 using System.Linq;
 
