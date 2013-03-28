@@ -10,7 +10,7 @@ double gettimeofday_sec(){
 
 int main(){
   const int ITE = 99;
-  const double TEI = 2.0;
+  const double TEI = 9.0;
 
   // Pow * 100
   for (int j=0; j<ITE; j++)
